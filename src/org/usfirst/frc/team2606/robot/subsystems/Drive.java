@@ -14,11 +14,11 @@ import org.usfirst.frc.team2606.robot.RobotMap;
 import org.usfirst.frc.team2606.robot.commands.TankDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
 public class Drive extends Subsystem {
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     private SpeedController leftMotor = RobotMap.LEFT_TANK_DRIVE;

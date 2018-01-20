@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2606.robot.subsystems.Drive;
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.Ultrasonic;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,11 +25,11 @@ import org.usfirst.frc.team2606.robot.subsystems.Drive;
  * project.
  */
 public class Robot extends TimedRobot {
+  
 	public static OI oi;
 	public static Drive drive;
-
-	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	private Gyro gyro = new AnalogGyro(1);
+	private Ultrasonic ultrasonic = new Ultrasonic(0,1);
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -38,6 +41,7 @@ public class Robot extends TimedRobot {
 		drive = new Drive();
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+
 	}
 
 	/**
@@ -99,6 +103,7 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+		gyro.reset();
 	}
 
 	/**
@@ -106,7 +111,12 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		double angle=gyro.getAngle();
+		double range=ultrasonic.getRangeInches();
+		SmartDashboard.putNumber("gyro angle:",angle);
+		SmartDashboard.putNumber("range?",range);
 		Scheduler.getInstance().run();
+
 	}
 
 	/**
