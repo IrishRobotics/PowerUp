@@ -30,7 +30,7 @@ public class Robot extends TimedRobot {
 			= new ExampleSubsystem();
 	public static OI m_oi;
 	private Gyro gyro = new AnalogGyro(1);
-	private Ultrasonic ultrasonic = new Ultrasonic(1,1);
+	private Ultrasonic ultrasonic = new Ultrasonic(0,1);
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
