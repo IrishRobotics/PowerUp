@@ -28,7 +28,6 @@ public class Robot extends TimedRobot {
   
 	public static OI oi;
 	public static Drive drive;
-	private Gyro gyro = new AnalogGyro(1);
 	private Ultrasonic ultrasonic = new Ultrasonic(0,1);
 
 	/**
@@ -40,7 +39,7 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		drive = new Drive();
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
+		// SmartDashboard.putData("Auto mode", m_chooser);
 
 	}
 
@@ -71,19 +70,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.start();
-		}
 	}
 
 	/**
@@ -100,10 +86,10 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
-		}
-		gyro.reset();
+		//if (m_autonomousCommand != null) {
+		//	m_autonomousCommand.cancel();
+		//}
+		//DRIVE_GYRO.reset();
 	}
 
 	/**
@@ -111,10 +97,10 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		double angle=gyro.getAngle();
-		double range=ultrasonic.getRangeInches();
-		SmartDashboard.putNumber("gyro angle:",angle);
-		SmartDashboard.putNumber("range?",range);
+		//double angle=DRIVE_GYRO.getAngle();
+		//double range=ultrasonic.getRangeInches();
+		//SmartDashboard.putNumber("gyro angle:",angle);
+		//SmartDashboard.putNumber("range?",range);
 		Scheduler.getInstance().run();
 
 	}
