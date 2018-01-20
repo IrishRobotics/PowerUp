@@ -7,11 +7,54 @@
 
 package org.usfirst.frc.team2606.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+    private Joystick leftJoystick = RobotMap.LEFT_JOYSTICK;
+    private Joystick rightJoystick = RobotMap.RIGHT_JOYSTICK;
+
+    public OI() {
+        JoystickButton XBOX_A = new JoystickButton(leftJoystick, 1);
+        JoystickButton XBOX_B = new JoystickButton(leftJoystick, 2);
+        JoystickButton XBOX_X = new JoystickButton(leftJoystick, 3);
+        JoystickButton XBOX_Y = new JoystickButton(leftJoystick, 4);
+
+        JoystickButton trigger = new JoystickButton(rightJoystick, 1);
+
+        JoystickButton TOP_UP = new JoystickButton(rightJoystick, 3);
+        JoystickButton TOP_DOWN = new JoystickButton(rightJoystick, 2);
+        JoystickButton TOP_LEFT = new JoystickButton(rightJoystick, 4);
+        JoystickButton TOP_RIGHT = new JoystickButton(rightJoystick, 5);
+
+        JoystickButton BOTTOM_MID_LEFT = new JoystickButton(rightJoystick, 8);
+        JoystickButton BOTTOM_MID_RIGHT = new JoystickButton(rightJoystick, 9);
+
+        JoystickButton BOTTOM_LEFT_UP = new JoystickButton(rightJoystick, 6);
+        JoystickButton BOTTOM_LEFT_DOWN = new JoystickButton(rightJoystick, 7);
+
+        JoystickButton BOTTOM_RIGHT_UP = new JoystickButton(rightJoystick, 11);
+        JoystickButton BOTTOM_RIGHT_DOWN = new JoystickButton(rightJoystick, 10);
+
+        // TODO Reverse drive with trigger
+        if (rightJoystick.getY() > .125) {
+            Robot.drive.move(rightJoystick.getY() * -.5,
+                    rightJoystick.getY() * -.5);
+        }
+    }
+
+    public Joystick getLeftJoystick() {
+        return leftJoystick;
+    }
+
+    public Joystick getRightJoystick() {
+        return rightJoystick;
+    }
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
