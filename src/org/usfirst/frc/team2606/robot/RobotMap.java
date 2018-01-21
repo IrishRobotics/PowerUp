@@ -9,6 +9,7 @@ package org.usfirst.frc.team2606.robot;
 
 
 import edu.wpi.first.wpilibj.*;
+import sun.net.www.content.text.Generic;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -26,8 +27,13 @@ public class RobotMap {
 
     public static Joystick LEFT_JOYSTICK = new Joystick(0);
     public static Joystick RIGHT_JOYSTICK = new Joystick(1);
+    private XboxController Controller = new XboxController(0);
 
     public static AnalogGyro DRIVE_GYRO = new AnalogGyro(0);
+
+    double L_STICK = Controller.getX(GenericHID.Hand.kLeft);
+    double L_TRIGGER = Controller.getTriggerAxis(GenericHID.Hand.kLeft);
+    double R_TRIGGER = Controller.getTriggerAxis(GenericHID.Hand.kRight);
 
     // TODO later for encoders
     //public static Encoder LEFT_DRIVE = new Encoder(2,3,false,CounterBase.EncodingType.k4X);
