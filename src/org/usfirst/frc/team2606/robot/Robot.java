@@ -8,6 +8,7 @@
 package org.usfirst.frc.team2606.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -25,9 +26,14 @@ import edu.wpi.first.wpilibj.Ultrasonic;
  * project.
  */
 public class Robot extends TimedRobot {
-  
+
+	private SendableChooser<String> m_chooser = new SendableChooser<>();
+
 	public static OI oi;
 	public static Drive drive;
+	public double scale;
+	public double orientation;
+
 	private Gyro gyro = new AnalogGyro(1);
 	private Ultrasonic ultrasonic = new Ultrasonic(0,1);
 
@@ -42,6 +48,9 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
+		// Initialize global constants
+		scale = 0.7;
+		orientation = 1.0;
 	}
 
 	/**
@@ -90,10 +99,20 @@ public class Robot extends TimedRobot {
 	 * This function is called periodically during autonomous.
 	 */
 	@Override
+	/**
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		switch (m_autoSelected) {
+		case CustomAuto:
+			// Put custom auto code here
+			break;
+		case DefaultAuto:
+		default:
+			// Put default auto code here
+			break;
+	 }
 	}
-
+	 **/
 	@Override
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
