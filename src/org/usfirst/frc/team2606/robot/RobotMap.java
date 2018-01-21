@@ -24,10 +24,9 @@ public class RobotMap {
     public static SpeedControllerGroup LEFT_TANK_DRIVE = new SpeedControllerGroup(FRONT_LEFT_MOTOR, BACK_LEFT_MOTOR);
     public static SpeedControllerGroup RIGHT_TANK_DRIVE = new SpeedControllerGroup(FRONT_RIGHT_MOTOR, BACK_RIGHT_MOTOR);
 
-    public static Joystick LEFT_JOYSTICK = new Joystick(0);
-    public static Joystick RIGHT_JOYSTICK = new Joystick(1);
+    public static Joystick XboxController = new Joystick(0);
 
-    public static AnalogGyro DRIVE_GYRO = new AnalogGyro(0);
+    //public static AnalogGyro DRIVE_GYRO = new AnalogGyro(0);
 
     // TODO later for encoders
     //public static Encoder LEFT_DRIVE = new Encoder(2,3,false,CounterBase.EncodingType.k4X);
