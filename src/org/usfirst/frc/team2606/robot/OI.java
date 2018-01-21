@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 */
 
 public class OI {
-   private Joystick XboxController = new Joystick(0);
+   private Joystick XboxController = RobotMap.XboxController;
+	
    public OI(){
        JoystickButton ButtonA = new JoystickButton(XboxController, 1);
        JoystickButton ButtonB = new JoystickButton(XboxController, 2);
