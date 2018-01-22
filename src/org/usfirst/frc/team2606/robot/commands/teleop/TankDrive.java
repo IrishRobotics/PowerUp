@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2606.robot.commands;
+package org.usfirst.frc.team2606.robot.commands.teleop;
 
 import org.usfirst.frc.team2606.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;

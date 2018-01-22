@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import org.usfirst.frc.team2606.robot.RobotMap;
-import org.usfirst.frc.team2606.robot.commands.TankDrive;
+import org.usfirst.frc.team2606.robot.commands.teleop.TankDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
