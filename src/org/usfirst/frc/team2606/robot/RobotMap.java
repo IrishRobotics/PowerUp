@@ -31,9 +31,12 @@ public class RobotMap {
 
     public static AnalogGyro DRIVE_GYRO = new AnalogGyro(0);
 
-    public static double L_STICK = Controller.getX(GenericHID.Hand.kLeft);
-    public static double L_TRIGGER = Controller.getTriggerAxis(GenericHID.Hand.kLeft);
-    public static double R_TRIGGER = Controller.getTriggerAxis(GenericHID.Hand.kRight);
+    private static double L_STICK = Controller.getX(GenericHID.Hand.kLeft);
+    private static double L_TRIGGER = Controller.getTriggerAxis(GenericHID.Hand.kLeft);
+    private static double R_TRIGGER = Controller.getTriggerAxis(GenericHID.Hand.kRight);
+
+    public static double xSpeed = (RobotMap.R_TRIGGER - RobotMap.L_TRIGGER) * Robot.scale * Robot.orientation;
+    public static double zRotation = RobotMap.L_STICK  * Robot.scale * Robot.orientation;
 
     // TODO later for encoders
     //public static Encoder LEFT_DRIVE = new Encoder(2,3,false,CounterBase.EncodingType.k4X);
