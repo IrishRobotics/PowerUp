@@ -9,7 +9,6 @@ package org.usfirst.frc.team2606.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -19,7 +18,8 @@ public class OI {
     private Joystick leftJoystick = RobotMap.LEFT_JOYSTICK;
     private Joystick rightJoystick = RobotMap.RIGHT_JOYSTICK;
 
-    public OI() {
+    OI() {
+        //Joystick Mapping
         JoystickButton XBOX_A = new JoystickButton(leftJoystick, 1);
         JoystickButton XBOX_B = new JoystickButton(leftJoystick, 2);
         JoystickButton XBOX_X = new JoystickButton(leftJoystick, 3);
@@ -40,6 +40,8 @@ public class OI {
 
         JoystickButton BOTTOM_RIGHT_UP = new JoystickButton(rightJoystick, 11);
         JoystickButton BOTTOM_RIGHT_DOWN = new JoystickButton(rightJoystick, 10);
+
+        //Xbox Mapping
 
         // TODO Reverse drive with trigger
         if (rightJoystick.getY() > .125) {

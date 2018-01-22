@@ -7,15 +7,14 @@
 
 package org.usfirst.frc.team2606.robot;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2606.robot.subsystems.Drive;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
-import edu.wpi.first.wpilibj.Ultrasonic;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,12 +24,16 @@ import edu.wpi.first.wpilibj.Ultrasonic;
  * project.
  */
 public class Robot extends TimedRobot {
-  
+
+	private SendableChooser<String> m_chooser = new SendableChooser<>();
+
 	public static OI oi;
 	public static Drive drive;
+	public static double scale;
+	public static double orientation;
+
 	private Gyro gyro = new AnalogGyro(1);
 	private Ultrasonic ultrasonic = new Ultrasonic(0,1);
-
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -42,6 +45,9 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
+		// Initialize global constants
+		scale = 0.7;
+		orientation = 1.0;
 	}
 
 	/**
@@ -89,11 +95,21 @@ public class Robot extends TimedRobot {
 	/**
 	 * This function is called periodically during autonomous.
 	 */
-	@Override
+
+	/**
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		switch (m_autoSelected) {
+		case CustomAuto:
+			// Put custom auto code here
+			break;
+		case DefaultAuto:
+		default:
+			// Put default auto code here
+			break;
+	 }
 	}
-
+	 **/
 	@Override
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when

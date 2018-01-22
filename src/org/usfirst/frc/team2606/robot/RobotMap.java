@@ -9,6 +9,7 @@ package org.usfirst.frc.team2606.robot;
 
 
 import edu.wpi.first.wpilibj.*;
+import sun.net.www.content.text.Generic;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -17,17 +18,22 @@ import edu.wpi.first.wpilibj.*;
  * floating around.
  */
 public class RobotMap {
-    public static SpeedController FRONT_LEFT_MOTOR = new Talon(1);
-    public static SpeedController BACK_LEFT_MOTOR = new Talon(0);
-    public static SpeedController FRONT_RIGHT_MOTOR = new Spark(3);
-    public static SpeedController BACK_RIGHT_MOTOR = new Talon(2);
+    private static SpeedController FRONT_LEFT_MOTOR = new Talon(1);
+    private static SpeedController BACK_LEFT_MOTOR = new Talon(0);
+    private static SpeedController FRONT_RIGHT_MOTOR = new Spark(3);
+    private static SpeedController BACK_RIGHT_MOTOR = new Talon(2);
     public static SpeedControllerGroup LEFT_TANK_DRIVE = new SpeedControllerGroup(FRONT_LEFT_MOTOR, BACK_LEFT_MOTOR);
     public static SpeedControllerGroup RIGHT_TANK_DRIVE = new SpeedControllerGroup(FRONT_RIGHT_MOTOR, BACK_RIGHT_MOTOR);
 
     public static Joystick LEFT_JOYSTICK = new Joystick(0);
     public static Joystick RIGHT_JOYSTICK = new Joystick(1);
+    private static XboxController Controller = new XboxController(0);
 
     public static AnalogGyro DRIVE_GYRO = new AnalogGyro(0);
+
+    public static double L_STICK = Controller.getX(GenericHID.Hand.kLeft);
+    public static double L_TRIGGER = Controller.getTriggerAxis(GenericHID.Hand.kLeft);
+    public static double R_TRIGGER = Controller.getTriggerAxis(GenericHID.Hand.kRight);
 
     // TODO later for encoders
     //public static Encoder LEFT_DRIVE = new Encoder(2,3,false,CounterBase.EncodingType.k4X);
