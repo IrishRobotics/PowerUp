@@ -90,6 +90,13 @@ public class Drive extends Subsystem {
     }
 
     /**
+     * Start Code for Calvin's Drive
+     */
+    public void calvin() {
+        
+    }
+
+    /**
      * Reset the robots sensors to the zero states.
      */
     public void reset() {

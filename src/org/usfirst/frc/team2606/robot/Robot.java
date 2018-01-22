@@ -29,12 +29,11 @@ public class Robot extends TimedRobot {
 
 	public static OI oi;
 	public static Drive drive;
-	public double scale;
-	public double orientation;
+	public static double scale;
+	public static double orientation;
 
 	private Gyro gyro = new AnalogGyro(1);
 	private Ultrasonic ultrasonic = new Ultrasonic(0,1);
-
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -96,7 +95,7 @@ public class Robot extends TimedRobot {
 	/**
 	 * This function is called periodically during autonomous.
 	 */
-	@Override
+
 	/**
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
