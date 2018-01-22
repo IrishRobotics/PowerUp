@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2606.robot.subsystems.Drive;
+import org.usfirst.frc.team2606.robot.subsystems.Drive2;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +26,7 @@ import org.usfirst.frc.team2606.robot.subsystems.Drive;
  */
 public class Robot extends TimedRobot {
 
+	public static final Drive2 CalvinsDrive = new Drive2();
 	private SendableChooser<String> m_chooser = new SendableChooser<>();
 
 	public static OI oi;
