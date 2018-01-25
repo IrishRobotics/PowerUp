@@ -57,31 +57,11 @@ public class Drive extends Subsystem {
     /**
      * Tank style driving for the DriveTrain.
      *
-     * @param left
-     *            Speed in range [-1,1]
-     * @param right
-     *            Speed in range [-1,1]
+     * @param left  Speed in range [-1,1]
+     * @param right Speed in range [-1,1]
      */
     public void move(double left, double right) {
         drive.tankDrive(left, right);
-    }
-
-    /**
-     *            The ps3 style joystick to use to drive tank style.
-     */
-    public void move(Joystick leftJoystick) {
-        int direction;
-        if (leftJoystick.getRawAxis(3) < -.75) {
-            move(leftJoystick.getRawAxis(1), leftJoystick.getRawAxis(5));
-            direction = 1;
-            SmartDashboard.putNumber("Reverse", leftJoystick.getRawAxis(3));
-        } else {
-            direction = -1;
-            SmartDashboard.putNumber("straight", leftJoystick.getRawAxis(3)
-                    * direction);
-        }
-        move(leftJoystick.getRawAxis(1) * direction,
-                leftJoystick.getRawAxis(5) * direction);
     }
 
     public void move(Joystick joystick, int numJoystick) {
@@ -92,7 +72,7 @@ public class Drive extends Subsystem {
      * Start Code for Calvin's Drive
      */
     public void calvin() {
-        
+
     }
 
     /**
