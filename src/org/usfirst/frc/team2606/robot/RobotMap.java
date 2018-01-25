@@ -9,7 +9,8 @@ package org.usfirst.frc.team2606.robot;
 
 
 import edu.wpi.first.wpilibj.*;
-import sun.net.www.content.text.Generic;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
+import org.usfirst.frc.team2606.robot.sensor.driver.ADIS16448_IMU;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -30,6 +31,7 @@ public class RobotMap {
     private static XboxController Controller = new XboxController(0);
 
     public static AnalogGyro DRIVE_GYRO = new AnalogGyro(0);
+    public static Gyro SUPER_GYRO = new ADIS16448_IMU();
 
     public static double L_STICK = Controller.getX(GenericHID.Hand.kLeft);
     public static double L_TRIGGER = Controller.getTriggerAxis(GenericHID.Hand.kLeft);
