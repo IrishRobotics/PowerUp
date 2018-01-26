@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2606.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TankDrive extends Command {
+public class CalvinDrive extends Command {
 
-    public TankDrive() {
+    public CalvinDrive() {
         requires(Robot.drive);
     }
 
