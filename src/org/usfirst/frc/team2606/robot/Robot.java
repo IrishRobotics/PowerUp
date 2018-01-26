@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2606.robot.subsystems.Drive;
-import org.usfirst.frc.team2606.robot.commands.autonomous.BreakPlane;
-import org.usfirst.frc.team2606.robot.commands.autonomous.SwitchPlace;
+import org.usfirst.frc.team2606.robot.commands.autonomous.*;
+import org.usfirst.frc.team2606.robot.commands.teleop.*;
 
 
 /**
@@ -29,8 +29,10 @@ import org.usfirst.frc.team2606.robot.commands.autonomous.SwitchPlace;
  */
 public class Robot extends TimedRobot {
 
-	private SendableChooser<String> autoChooser = new SendableChooser<>();
+	private SendableChooser<Command> autoChooser = new SendableChooser<>();
+	private SendableChooser<Command> teleChooser = new SendableChooser<>();
 	private Command autonomousCommand;
+	private Command teleMode;
 
 	public static OI oi;
 	public static Drive drive;
@@ -48,8 +50,12 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		drive = new Drive();
 
+		teleChooser.addDefault("Tank Drive", new TankDrive());
+		teleChooser.addObject("Calvin Drive", new CalvinDrive());
+
 		//autoChooser.addObject("Break the Plane", new BreakPlane());
 		SmartDashboard.putData("Auto mode", autoChooser);
+		SmartDashboard.putData("Tele Mode", teleChooser);
 
 		// Initialize global constants
 		scale = 0.7;
@@ -111,6 +117,9 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+		teleMode = (Command) teleChooser.getSelected();
+		teleMode.start();
+
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}

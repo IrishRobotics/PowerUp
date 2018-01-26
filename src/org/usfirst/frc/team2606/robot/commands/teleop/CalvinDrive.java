@@ -20,10 +20,10 @@ public class CalvinDrive extends Command {
         int direction;
         if (Robot.oi.getRightTriggerValue() < -.75) {
             Robot.drive.move(Robot.oi.getLeftAnalogYValue(), Robot.oi.getRightAnalogYValue());
-            direction = 1;
+            direction = -1;
             SmartDashboard.putNumber("Reverse", Robot.oi.getRightTriggerValue());
         } else {
-            direction = -1;
+            direction = 1;
             SmartDashboard.putNumber("straight", Robot.oi.getRightTriggerValue()
                     * direction);
         }
