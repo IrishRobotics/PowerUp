@@ -115,6 +115,7 @@ public class Robot extends TimedRobot {
 			autonomousCommand.cancel();
 		}
 		gyro.reset();
+
 	}
 
 	/**
