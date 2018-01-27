@@ -181,3 +181,6 @@ local.properties
 
 *.idea
 *.iml
+
+# Except everything in the lib folder, which contains essential binaries for compilation
+!lib/**/*
