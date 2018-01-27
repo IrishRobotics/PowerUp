@@ -22,7 +22,7 @@ public class CalvinDrive extends Command {
 
         //declares multipliers from left analog and trigger input
         analogMultiplier = (double) -2 * Math.abs(Robot.oi.getLeftAnalogXValue()) + 1;
-        triggerMultiplier = (double) 2 * (Robot.oi.getRightTriggerValue() - Robot.oi.getLeftTriggerValue());
+        triggerMultiplier = (double) (Robot.oi.getRightTriggerValue() - Robot.oi.getLeftTriggerValue());
         speedMultiplier = analogMultiplier * triggerMultiplier;
 
         if (Robot.oi.getLeftAnalogXValue() < 0.45  ) {
