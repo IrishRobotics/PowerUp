@@ -50,8 +50,8 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		drive = new Drive();
 
-		teleChooser.addDefault("Tank Drive", new TankDrive());
-		teleChooser.addObject("Calvin Drive", new CalvinDrive());
+		teleChooser.addDefault("Calvin Drive", new CalvinDrive());
+		teleChooser.addObject("Tank Drive", new TankDrive());
 
 		//autoChooser.addObject("Break the Plane", new BreakPlane());
 		SmartDashboard.putData("Auto mode", autoChooser);
