@@ -11,24 +11,26 @@ public class CalvinDrive extends Command {
         requires(Robot.drive);
     }
 
+    private double analogMultiplier, triggerMultiplier, speedMultiplier;
+
     // Called just before this Command runs the first time
     protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        int direction;
-        if (Robot.oi.getRightTriggerValue() < -.75) {
-            Robot.drive.move(Robot.oi.getLeftAnalogYValue(), Robot.oi.getRightAnalogYValue());
-            direction = -1;
-            SmartDashboard.putNumber("Reverse", Robot.oi.getRightTriggerValue());
-        } else {
-            direction = 1;
-            SmartDashboard.putNumber("straight", Robot.oi.getRightTriggerValue()
-                    * direction);
+
+        //decalres multilpiers from left analog and trigger input
+        analogMultiplier = (double) -2 * Math.abs(Robot.oi.getRightAnalogXValue()) + 1;
+        triggerMultiplier = (double) 2 * (Robot.oi.getRightTriggerValue - Robot.oi.getRightTriggerValue());
+        speedMultiplier = analogMultiplier * triggerMultiplier;
+
+        if (Robot.oi.getLeftAnalogXValue() < 0.45  ) {
+            Robot.drive.move(speedMultiplier, triggerMultiplier);
+        } else if (Robot.oi.getLeftAnalogXValue() > 0.55){
+            Robot.drive.move(triggerMultiplier, speedMultiplier);
         }
-        Robot.drive.move(Robot.oi.getLeftAnalogYValue() * direction,
-                Robot.oi.getRightAnalogYValue() * direction);
+        Robot.drive.move(triggerMultiplier, triggerMultiplier);
     }
 
     // TODO be able to finish?
