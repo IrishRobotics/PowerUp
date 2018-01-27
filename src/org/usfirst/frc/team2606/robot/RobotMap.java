@@ -31,6 +31,9 @@ public class RobotMap {
     public static AnalogGyro DRIVE_GYRO = new AnalogGyro(0);
     public static ADIS16448_IMU SUPER_GYRO = new ADIS16448_IMU();
 
+    public static DigitalInput LIMIT_SWITCH = new DigitalInput(9);
+
+
     // TODO later for encoders
     //public static Encoder LEFT_DRIVE = new Encoder(2,3,false,CounterBase.EncodingType.k4X);
     //public static Encoder RIGHT_DRIVE = new Encoder(4,5,false,CounterBase.EncodingType.k4X);
