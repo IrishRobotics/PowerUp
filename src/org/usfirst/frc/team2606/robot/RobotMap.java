@@ -29,7 +29,7 @@ public class RobotMap {
     public static Joystick XBOX_CONTROLLER = new Joystick(0);
 
     public static AnalogGyro DRIVE_GYRO = new AnalogGyro(0);
-    public static Gyro SUPER_GYRO = new ADIS16448_IMU();
+    public static ADIS16448_IMU SUPER_GYRO = new ADIS16448_IMU();
 
     // TODO later for encoders
     //public static Encoder LEFT_DRIVE = new Encoder(2,3,false,CounterBase.EncodingType.k4X);

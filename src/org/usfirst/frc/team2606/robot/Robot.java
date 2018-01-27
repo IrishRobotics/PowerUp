@@ -137,6 +137,9 @@ public class Robot extends TimedRobot {
 		double range=ultrasonic.getRangeInches();
 		SmartDashboard.putNumber("gyro angle:",angle);
 		SmartDashboard.putNumber("angleSuper",angleSuper);
+		SmartDashboard.putNumber("Angle X", RobotMap.SUPER_GYRO.getAngleX());
+		SmartDashboard.putNumber("Angle Y", RobotMap.SUPER_GYRO.getAngleY());
+		SmartDashboard.putNumber("Angle Z", RobotMap.SUPER_GYRO.getAngleZ());
 		SmartDashboard.putNumber("range?",range);
 		Scheduler.getInstance().run();
 
