@@ -18,15 +18,18 @@ public class Intake extends Subsystem {
 	}
 
 	public void collect() {
-		
+		leftIntakeMotor.set(-1);
+		rightIntakeMotor.set(1);
 	}
 
 	public void release() {
-		
+		leftIntakeMotor.set(1);
+		rightIntakeMotor.set(-1);
 	}
 	
 	public void neutralize(){
-		
+		leftIntakeMotor.set(0);
+		rightIntakeMotor.set(0);
 	}
 
 }
