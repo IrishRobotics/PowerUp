@@ -24,10 +24,10 @@ public class CalvinDrive extends Command {
         analogMultiplier = (double) -2 * Math.abs(Robot.oi.getLeftAnalogXValue()) + 1;
         triggerMultiplier = (double) (Robot.oi.getRightTriggerValue() - Robot.oi.getLeftTriggerValue());
         speedMultiplier = analogMultiplier * triggerMultiplier;
-
-        if (Robot.oi.getLeftAnalogXValue() < 0.45  ) {
+        
+        if (Robot.oi.getLeftAnalogXValue() < 0.485  ) {
             Robot.drive.move(speedMultiplier, triggerMultiplier);
-        } else if (Robot.oi.getLeftAnalogXValue() > 0.55){
+        } else if (Robot.oi.getLeftAnalogXValue() > 0.515){
             Robot.drive.move(triggerMultiplier, speedMultiplier);
         } else {
             Robot.drive.move(triggerMultiplier, triggerMultiplier);
