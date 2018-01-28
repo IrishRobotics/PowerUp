@@ -23,8 +23,11 @@ public class RobotMap {
     private static SpeedController BACK_LEFT_MOTOR = new Talon(0);
     private static SpeedController FRONT_RIGHT_MOTOR = new Spark(3);
     private static SpeedController BACK_RIGHT_MOTOR = new Talon(2);
+    private static SpeedController LEFT_INTAKE_MOTOR = new Talon(4);
+    private static SpeedController RIGHT_INTAKE_MOTOR = new Talon(5);
     public static SpeedControllerGroup LEFT_TANK_DRIVE = new SpeedControllerGroup(FRONT_LEFT_MOTOR, BACK_LEFT_MOTOR);
     public static SpeedControllerGroup RIGHT_TANK_DRIVE = new SpeedControllerGroup(FRONT_RIGHT_MOTOR, BACK_RIGHT_MOTOR);
+	
 
     public static Joystick XBOX_CONTROLLER = new Joystick(0);
 
