@@ -34,9 +34,6 @@ public class OI {
     private JoystickAxis rightAnalog;
     private JoystickAxis leftTrigger;
     private JoystickAxis rightTrigger;
-    private AnalogGyro driveGyro;
-    private ADIS16448_IMU superGyro;
-    private DigitalInput limitSwitch;
 
     OI() {
         //Joystick Mapping
@@ -55,10 +52,6 @@ public class OI {
         rightAnalog = new JoystickAxis(xboxController, RobotMap.RIGHT_ANALOG_X_AXIS, RobotMap.RIGHT_ANALOG_Y_AXIS);
         leftTrigger = new JoystickAxis(xboxController, RobotMap.LEFT_TRIGGER_X_AXIS, RobotMap.LEFT_TRIGGER_Y_AXIS);
         rightTrigger = new JoystickAxis(xboxController, RobotMap.RIGHT_TRIGGER_X_AXIS, RobotMap.RIGHT_TRIGGER_Y_AXIS);
-
-        driveGyro = new AnalogGyro(RobotMap.DRIVE_GYRO);
-        superGyro = new ADIS16448_IMU();
-        limitSwitch = new DigitalInput(RobotMap.LIMIT_SWITCH);
 
         SmartDashboard.putBoolean("A Button:", xboxA.get());
         SmartDashboard.putBoolean("B Button:", xboxB.get());
@@ -140,15 +133,5 @@ public class OI {
     }
     public double getRightTriggerValue() {
         return rightTrigger.getX();
-    }
-
-    public AnalogGyro getDriveGyro() {
-        return driveGyro;
-    }
-    public ADIS16448_IMU getSuperGyro() {
-        return superGyro;
-    }
-    public DigitalInput getLimitSwitch() {
-        return limitSwitch;
     }
 }

@@ -39,8 +39,6 @@ public class Robot extends TimedRobot {
 	public static double scale;
 	public static double orientation;
 
-	private Gyro gyro = new AnalogGyro(1);
-	private Ultrasonic ultrasonic = new Ultrasonic(0,1);
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -123,8 +121,7 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
-		gyro.reset();
-		Robot.oi.getSuperGyro().reset();
+		drive.reset();
 	}
 
 	/**
@@ -132,17 +129,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		double angle=gyro.getAngle();
-		double angleSuper=Robot.oi.getSuperGyro().getAngle();
-		double range=ultrasonic.getRangeInches();
-		SmartDashboard.putNumber("gyro angle:",angle);
-		SmartDashboard.putNumber("angleSuper",angleSuper);
-		SmartDashboard.putNumber("Angle X", Robot.oi.getSuperGyro().getAngleX());
-		SmartDashboard.putNumber("Angle Y", Robot.oi.getSuperGyro().getAngleY());
-		SmartDashboard.putNumber("Angle Z", Robot.oi.getSuperGyro().getAngleZ());
-		SmartDashboard.putNumber("range?",range);
 		Scheduler.getInstance().run();
-
+		drive.log();
 	}
 
 	/**

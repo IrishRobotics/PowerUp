@@ -14,38 +14,40 @@ package org.usfirst.frc.team2606.robot;
  * floating around.
  */
 public class RobotMap {
-    public static int FRONT_LEFT_MOTOR = 0;
-    public static int BACK_LEFT_MOTOR = 1;
-    public static int FRONT_RIGHT_MOTOR = 2;
-    public static int BACK_RIGHT_MOTOR = 3;
+    public static final int FRONT_LEFT_MOTOR = 0;
+    public static final int BACK_LEFT_MOTOR = 1;
+    public static final int FRONT_RIGHT_MOTOR = 2;
+    public static final int BACK_RIGHT_MOTOR = 3;
 
-    public static int XBOX_CONTROLLER = 0;
+    public static final int XBOX_CONTROLLER = 0;
 
-    public static int XBOX_A = 1;
-    public static int XBOX_B = 2;
-    public static int XBOX_X = 3;
-    public static int XBOX_Y = 4;
-    public static int LEFT_BUMPER = 5;
-    public static int RIGHT_BUMPER = 6;
-    public static int SELECT = 7;
-    public static int START = 8;
-    public static int PRESS_LEFT_ANALOG = 9;
-    public static int PRESS_RIGHT_ANALOG = 10;
+    public static final int XBOX_A = 1;
+    public static final int XBOX_B = 2;
+    public static final int XBOX_X = 3;
+    public static final int XBOX_Y = 4;
+    public static final int LEFT_BUMPER = 5;
+    public static final int RIGHT_BUMPER = 6;
+    public static final int SELECT = 7;
+    public static final int START = 8;
+    public static final int PRESS_LEFT_ANALOG = 9;
+    public static final int PRESS_RIGHT_ANALOG = 10;
 
-    public static int LEFT_ANALOG_X_AXIS = 0;
-    public static int RIGHT_ANALOG_X_AXIS = 4;
-    public static int LEFT_TRIGGER_X_AXIS = 2;
-    public static int RIGHT_TRIGGER_X_AXIS = 3;
+    public static final int LEFT_ANALOG_X_AXIS = 0;
+    public static final int RIGHT_ANALOG_X_AXIS = 4;
+    public static final int LEFT_TRIGGER_X_AXIS = 2;
+    public static final int RIGHT_TRIGGER_X_AXIS = 3;
 
-    public static int LEFT_ANALOG_Y_AXIS = 1;
-    public static int RIGHT_ANALOG_Y_AXIS = 5;
-    public static int LEFT_TRIGGER_Y_AXIS = 2;
-    public static int RIGHT_TRIGGER_Y_AXIS = 3;
+    public static final int LEFT_ANALOG_Y_AXIS = 1;
+    public static final int RIGHT_ANALOG_Y_AXIS = 5;
+    public static final int LEFT_TRIGGER_Y_AXIS = 2;
+    public static final int RIGHT_TRIGGER_Y_AXIS = 3;
 
-    public static int DRIVE_GYRO = 0;
-    public static int LIMIT_SWITCH = 9;
+    public static final int DRIVE_GYRO = 0;
+    public static final int LIMIT_SWITCH = 9;
 
-    // TODO later for encoders
-    //public static Encoder LEFT_DRIVE = new Encoder(2,3,false,CounterBase.EncodingType.k4X);
-    //public static Encoder RIGHT_DRIVE = new Encoder(4,5,false,CounterBase.EncodingType.k4X);
+    public static final int ULTRASONIC_OUPUT = 0;
+    public static final int ULTRASONIC_INPUT = 1;
+
+    //public static final int LEFT_ENCODER = 0;
+    //public static final int RIGHT_ENCODER= 0;
 }
