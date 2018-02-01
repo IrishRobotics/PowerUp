@@ -124,7 +124,7 @@ public class Robot extends TimedRobot {
 			autonomousCommand.cancel();
 		}
 		gyro.reset();
-		RobotMap.SUPER_GYRO.reset();
+		Robot.oi.getSuperGyro().reset();
 	}
 
 	/**
@@ -133,13 +133,13 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		double angle=gyro.getAngle();
-		double angleSuper=RobotMap.SUPER_GYRO.getAngle();
+		double angleSuper=Robot.oi.getSuperGyro().getAngle();
 		double range=ultrasonic.getRangeInches();
 		SmartDashboard.putNumber("gyro angle:",angle);
 		SmartDashboard.putNumber("angleSuper",angleSuper);
-		SmartDashboard.putNumber("Angle X", RobotMap.SUPER_GYRO.getAngleX());
-		SmartDashboard.putNumber("Angle Y", RobotMap.SUPER_GYRO.getAngleY());
-		SmartDashboard.putNumber("Angle Z", RobotMap.SUPER_GYRO.getAngleZ());
+		SmartDashboard.putNumber("Angle X", Robot.oi.getSuperGyro().getAngleX());
+		SmartDashboard.putNumber("Angle Y", Robot.oi.getSuperGyro().getAngleY());
+		SmartDashboard.putNumber("Angle Z", Robot.oi.getSuperGyro().getAngleZ());
 		SmartDashboard.putNumber("range?",range);
 		Scheduler.getInstance().run();
 

@@ -7,11 +7,6 @@
 
 package org.usfirst.frc.team2606.robot;
 
-
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
-import org.usfirst.frc.team2606.robot.sensor.driver.ADIS16448_IMU;
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -19,32 +14,38 @@ import org.usfirst.frc.team2606.robot.sensor.driver.ADIS16448_IMU;
  * floating around.
  */
 public class RobotMap {
-    private static SpeedController FRONT_LEFT_MOTOR = new Talon(1);
-    private static SpeedController BACK_LEFT_MOTOR = new Talon(0);
-    private static SpeedController FRONT_RIGHT_MOTOR = new Spark(3);
-    private static SpeedController BACK_RIGHT_MOTOR = new Talon(2);
-    public static SpeedControllerGroup LEFT_TANK_DRIVE = new SpeedControllerGroup(FRONT_LEFT_MOTOR, BACK_LEFT_MOTOR);
-    public static SpeedControllerGroup RIGHT_TANK_DRIVE = new SpeedControllerGroup(FRONT_RIGHT_MOTOR, BACK_RIGHT_MOTOR);
+    public static int FRONT_LEFT_MOTOR = 0;
+    public static int BACK_LEFT_MOTOR = 1;
+    public static int FRONT_RIGHT_MOTOR = 2;
+    public static int BACK_RIGHT_MOTOR = 3;
 
-    public static Joystick XBOX_CONTROLLER = new Joystick(0);
+    public static int XBOX_CONTROLLER = 0;
 
-    public static AnalogGyro DRIVE_GYRO = new AnalogGyro(0);
-    public static ADIS16448_IMU SUPER_GYRO = new ADIS16448_IMU();
+    public static int XBOX_A = 1;
+    public static int XBOX_B = 2;
+    public static int XBOX_X = 3;
+    public static int XBOX_Y = 4;
+    public static int LEFT_BUMPER = 5;
+    public static int RIGHT_BUMPER = 6;
+    public static int SELECT = 7;
+    public static int START = 8;
+    public static int PRESS_LEFT_ANALOG = 9;
+    public static int PRESS_RIGHT_ANALOG = 10;
 
-    public static DigitalInput LIMIT_SWITCH = new DigitalInput(9);
+    public static int LEFT_ANALOG_X_AXIS = 0;
+    public static int RIGHT_ANALOG_X_AXIS = 4;
+    public static int LEFT_TRIGGER_X_AXIS = 2;
+    public static int RIGHT_TRIGGER_X_AXIS = 3;
 
+    public static int LEFT_ANALOG_Y_AXIS = 1;
+    public static int RIGHT_ANALOG_Y_AXIS = 5;
+    public static int LEFT_TRIGGER_Y_AXIS = 2;
+    public static int RIGHT_TRIGGER_Y_AXIS = 3;
+
+    public static int DRIVE_GYRO = 0;
+    public static int LIMIT_SWITCH = 9;
 
     // TODO later for encoders
     //public static Encoder LEFT_DRIVE = new Encoder(2,3,false,CounterBase.EncodingType.k4X);
     //public static Encoder RIGHT_DRIVE = new Encoder(4,5,false,CounterBase.EncodingType.k4X);
-
-    // For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
-
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
 }

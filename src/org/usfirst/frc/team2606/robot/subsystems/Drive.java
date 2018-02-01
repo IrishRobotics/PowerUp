@@ -20,17 +20,24 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Drive extends Subsystem {
 
+    private SpeedController frontLeft, backLeft, frontRight, backRight;
+    private SpeedControllerGroup left, right;
     private DifferentialDrive drive;
-    private AnalogGyro gyro = RobotMap.DRIVE_GYRO;
+    private AnalogGyro gyro;
     private double gyroDesiredHeading;
     //private Encoder leftEncoder = RobotMap.LEFT_TANK;
     //private Encoder rightEncoder = RobotMap.RIGHT_DRIVE;
 
     public Drive() {
         super();
-        SpeedController leftMotor = RobotMap.LEFT_TANK_DRIVE;
-        SpeedController rightMotor = RobotMap.RIGHT_TANK_DRIVE;
-        drive = new DifferentialDrive(leftMotor, rightMotor);
+        frontLeft = new VictorSP(RobotMap.FRONT_LEFT_MOTOR);
+        backLeft = new VictorSP(RobotMap.BACK_LEFT_MOTOR);
+        frontRight = new VictorSP(RobotMap.FRONT_RIGHT_MOTOR);
+        backRight = new VictorSP(RobotMap.BACK_RIGHT_MOTOR);
+        left = new SpeedControllerGroup(frontLeft, backLeft);
+        right = new SpeedControllerGroup(frontRight, frontLeft);
+        drive = new DifferentialDrive(left, right);
+        gyro = new AnalogGyro(RobotMap.DRIVE_GYRO);
         //leftEncoder.setDistancePerPulse((0.5 * Math.PI) / 360.0);
         //rightEncoder.setDistancePerPulse((0.5 * Math.PI) / 360.0);
     }
