@@ -27,7 +27,7 @@ public class Intake extends Subsystem {
 		rightIntakeMotor.set(-1);
 	}
 	
-	public void neutralize(){
+	public void hold(){
 		leftIntakeMotor.set(0);
 		rightIntakeMotor.set(0);
 	}
