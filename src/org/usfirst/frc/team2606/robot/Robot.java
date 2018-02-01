@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2606.robot.subsystems.Drive;
@@ -34,6 +35,7 @@ public class Robot extends TimedRobot {
 	private Command autonomousCommand;
 	private Command teleMode;
 
+	public static NetworkTable table;
 	public static OI oi;
 	public static Drive drive;
 	public static double scale;
@@ -47,6 +49,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		oi = new OI();
 		drive = new Drive();
+		table = NetworkTable.getTable("Dashboard");
 
 		teleChooser.addDefault("Calvin Drive", new CalvinDrive());
 		teleChooser.addObject("Tank Drive", new TankDrive());

@@ -42,10 +42,9 @@ public class RobotMap {
     public static final int LEFT_TRIGGER_Y_AXIS = 2;
     public static final int RIGHT_TRIGGER_Y_AXIS = 3;
 
-    public static final int DRIVE_GYRO = 0;
     public static final int LIMIT_SWITCH = 9;
 
-    public static final int ULTRASONIC_OUPUT = 0;
+    public static final int ULTRASONIC_OUTPUT = 0;
     public static final int ULTRASONIC_INPUT = 1;
 
     //public static final int LEFT_ENCODER = 0;

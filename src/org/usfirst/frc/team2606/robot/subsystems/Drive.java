@@ -41,7 +41,7 @@ public class Drive extends Subsystem {
         right = new SpeedControllerGroup(frontRight, backRight);
         drive = new DifferentialDrive(left, right);
         gyro = new ADIS16448_IMU();
-        ultrasonic = new Ultrasonic(RobotMap.ULTRASONIC_OUPUT, RobotMap.ULTRASONIC_INPUT);
+        ultrasonic = new Ultrasonic(RobotMap.ULTRASONIC_OUTPUT, RobotMap.ULTRASONIC_INPUT);
         //leftEncoder = RobotMap.LEFT_ENCODER;
         //rightEncoder = RobotMap.RIGHT_ENCODER;
         //leftEncoder.setDistancePerPulse((0.5 * Math.PI) / 360.0);
@@ -74,6 +74,7 @@ public class Drive extends Subsystem {
         SmartDashboard.putNumber("Angle Y", gyro.getAngleY());
         SmartDashboard.putNumber("Angle Z", gyro.getAngleZ());
         SmartDashboard.putNumber("range?",range);
+        Robot.table.putNumber("AngleX", gyro.getAngleX());
     }
 
     /**
