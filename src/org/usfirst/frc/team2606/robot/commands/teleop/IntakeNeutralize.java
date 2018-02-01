@@ -8,15 +8,15 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class IntakeNeutralize extends Command {
+public class IntakeHold extends Command {
 
-	public IntakeNeutralize() {
+	public IntakeHold() {
 		requires(Robot.intake);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.intake.neutralize();
+		Robot.intake.Hold();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
