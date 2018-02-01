@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Lift extends Subsystem {
+	SpeedController liftMoter = RobotMap.LIFT_MOTOR;
 
 	public Lift() {
 		super();
