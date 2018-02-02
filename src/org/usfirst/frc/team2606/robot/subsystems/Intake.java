@@ -15,6 +15,7 @@ public class Intake extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
+		hold();
 	}
 
 	public void collect() {
