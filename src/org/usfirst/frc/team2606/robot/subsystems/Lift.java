@@ -14,15 +14,19 @@ public class Lift extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
+		hold();
 	}
 
 	public void ascend() {
+		liftMoter.set(1);
 	}
 
 	public void descend() {
+		liftMotor.set(-1);
 	}
 	
 	public void hold(){
+		liftMotor.set(0);
 	}
 
 }
