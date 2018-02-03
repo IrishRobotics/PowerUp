@@ -14,16 +14,17 @@ package org.usfirst.frc.team2606.robot;
  * floating around.
  */
 public class RobotMap {
-    public static final int FRONT_LEFT_MOTOR = 2;
-    public static final int BACK_LEFT_MOTOR = 3;
+
     public static final int FRONT_RIGHT_MOTOR = 0;
     public static final int BACK_RIGHT_MOTOR = 1;
+    public static final int FRONT_LEFT_MOTOR = 2;
+    public static final int BACK_LEFT_MOTOR = 3;
 
-    public static final int LEFT_INTAKE_MOTOR = 4;
-    public static final int RIGHT_INTAKE_MOTOR = 5;
+    public static final int CLIMB_MOTOR = 0;
+    public static final int LIFT_MOTOR = 0;
 
-    public static final int LIFT_MOTOR = 6;
-    public static final int CLIMB_MOTOR = 7;
+    public static final int RIGHT_INTAKE_MOTOR = 0;
+    public static final int LEFT_INTAKE_MOTOR = 0;
 
     public static final int XBOX_CONTROLLER = 0;
 
@@ -52,6 +53,13 @@ public class RobotMap {
 
     public static final int ULTRASONIC_OUTPUT = 0;
     public static final int ULTRASONIC_INPUT = 1;
+
+    public static final int FRONT_CAMERA = 0;
+    public static final int BACK_CAMERA = 1;
+
+    //number of auto && tele modes
+    public static final int AUTO_MODES = 2;
+    public static final int TELE_MODES = 2;
 
     //public static final int LEFT_ENCODER = 0;
     //public static final int RIGHT_ENCODER= 0;

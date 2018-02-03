@@ -7,10 +7,9 @@
 
 package org.usfirst.frc.team2606.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -30,11 +29,12 @@ import org.usfirst.frc.team2606.robot.commands.teleop.*;
  */
 public class Robot extends TimedRobot {
 
-	private SendableChooser<Command> autoChooser = new SendableChooser<>();
-	private SendableChooser<Command> teleChooser = new SendableChooser<>();
+	private String[] autoSelector;
+	private String[] teleSelector;
 	private Command autonomousCommand;
-	private Command teleMode;
+	private Command teleCommand;
 
+	public UsbCamera frontCamera, backCamera;
 	public static NetworkTable table;
 	public static OI oi;
 	public static Drive drive;
@@ -50,13 +50,14 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		drive = new Drive();
 		table = NetworkTable.getTable("Dashboard");
-
-		teleChooser.addDefault("Calvin Drive", new CalvinDrive());
-		teleChooser.addObject("Tank Drive", new TankDrive());
+		frontCamera = CameraServer.getInstance().startAutomaticCapture("Forward Camera", RobotMap.FRONT_CAMERA);
+		backCamera = CameraServer.getInstance().startAutomaticCapture("Backward Camera", RobotMap.BACK_CAMERA);
+		autoSelector = new String[RobotMap.AUTO_MODES-1];
+		teleSelector = new String[RobotMap.TELE_MODES-1];
 
 		//autoChooser.addObject("Break the Plane", new BreakPlane());
-		SmartDashboard.putData("Auto mode", autoChooser);
-		SmartDashboard.putData("Tele Mode", teleChooser);
+		table.putStringArray("autonomousModes", autoSelector);
+		table.putStringArray("teleModes", teleSelector);
 
 		// Initialize global constants
 		scale = 0.7;
@@ -90,9 +91,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-
-		String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-		switch(autoSelected) {
+		String autoSelected = table.getString("autonomousSelected", "Default");
+		switch (autoSelected) {
 			case "Place Cube on Switch":
 				autonomousCommand = new SwitchPlace();
 				break;
@@ -118,11 +118,24 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		teleMode = (Command) teleChooser.getSelected();
-		teleMode.start();
+
+		String teleSelected = table.getString("teleSelected", "Default");
+		switch (teleSelected) {
+			case "Calvin Drive":
+				autonomousCommand = new SwitchPlace();
+				break;
+			case "Tank Drive":
+			default:
+				autonomousCommand = new BreakPlane();
+				break;
+		}
 
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
+		}
+
+		if (teleCommand != null) {
+			teleCommand.start();
 		}
 		drive.reset();
 	}
@@ -134,6 +147,7 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		drive.log();
+		updateDashboard();
 	}
 
 	/**
@@ -141,6 +155,13 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+	}
+
+	//Updates the FRCDashboard
+	private void updateDashboard() {
+		table.putNumber("time", Timer.getMatchTime());
+		drive.updateDashboard();
+
 	}
 
 	public void log() {

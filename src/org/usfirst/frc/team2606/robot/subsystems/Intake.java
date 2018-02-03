@@ -8,29 +8,27 @@
 package org.usfirst.frc.team2606.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.SpeedController;
-import org.usfirst.frc.team2606.robot.Robot;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team2606.robot.RobotMap;
 
 /**
- *
+ * An example subsystem.  You can replace me with your own Subsystem.
  */
 public class Intake extends Subsystem {
-	SpeedController leftIntakeMotor;
-	SpeedController rightIntakeMotor;
+
+	private SpeedController left, right;
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 
 	public Intake() {
 		super();
-		leftIntakeMotor = new Spark(RobotMap.LEFT_INTAKE_MOTOR);
-		rightIntakeMotor = new Spark(RobotMap.RIGHT_INTAKE_MOTOR);
+		left = new Spark(RobotMap.LEFT_INTAKE_MOTOR);
+		right = new Spark(RobotMap.RIGHT_INTAKE_MOTOR);
 	}
 
 	public void initDefaultCommand() {
-	}
-
-	public void setIntakeMotors(double left, double right) {
-		leftIntakeMotor.set(left);
-		rightIntakeMotor.set(right);
+		// Set the default command for a subsystem here.
+		// setDefaultCommand(new MySpecialCommand());
 	}
 }
