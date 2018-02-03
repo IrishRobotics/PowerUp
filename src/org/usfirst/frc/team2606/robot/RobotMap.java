@@ -23,10 +23,11 @@ public class RobotMap {
     private static SpeedController BACK_LEFT_MOTOR = new VictorSP(1);
     private static SpeedController FRONT_RIGHT_MOTOR = new VictorSP(2);
     private static SpeedController BACK_RIGHT_MOTOR = new VictorSP(3);
-    private static SpeedController LIFT_MOTOR = new PWMTalonSRX(12);
-    private static SpeedController CLIMB_MOTOR = new PWMTalonSRX(13);
-    private static SpeedController RIGHT_INTAKE_MOTOR = new Spark(14);
-    private static SpeedController LEFT_INTAKE_MOTOR = new Spark(15);
+    private static SpeedController RIGHT_INTAKE_MOTOR = new Spark(4);
+    private static SpeedController LEFT_INTAKE_MOTOR = new Spark(5);
+    private static SpeedController LIFT_MOTOR = new PWMTalonSRX(6);
+    private static SpeedController CLIMB_MOTOR = new PWMTalonSRX(7);
+
     public static SpeedControllerGroup LEFT_TANK_DRIVE = new SpeedControllerGroup(FRONT_LEFT_MOTOR, BACK_LEFT_MOTOR);
     public static SpeedControllerGroup RIGHT_TANK_DRIVE = new SpeedControllerGroup(FRONT_RIGHT_MOTOR, BACK_RIGHT_MOTOR);
 	
