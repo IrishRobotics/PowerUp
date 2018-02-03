@@ -74,7 +74,10 @@ public class Drive extends Subsystem {
         SmartDashboard.putNumber("Angle Y", gyro.getAngleY());
         SmartDashboard.putNumber("Angle Z", gyro.getAngleZ());
         SmartDashboard.putNumber("range?",range);
-        Robot.table.putNumber("AngleX", gyro.getAngleX());
+    }
+
+    public void updateDashboard(){
+        Robot.table.putNumber("yaw", gyro.getAngleZ());
     }
 
     /**
