@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2606.robot.subsystems.Drive;
@@ -34,13 +35,12 @@ public class Robot extends TimedRobot {
 	private Command autonomousCommand;
 	private Command teleMode;
 
+	public static NetworkTable table;
 	public static OI oi;
 	public static Drive drive;
 	public static double scale;
 	public static double orientation;
 
-	private Gyro gyro = new AnalogGyro(1);
-	private Ultrasonic ultrasonic = new Ultrasonic(0,1);
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -49,6 +49,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		oi = new OI();
 		drive = new Drive();
+		table = NetworkTable.getTable("Dashboard");
 
 		teleChooser.addDefault("Calvin Drive", new CalvinDrive());
 		teleChooser.addObject("Tank Drive", new TankDrive());
@@ -123,8 +124,7 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
-		gyro.reset();
-		RobotMap.SUPER_GYRO.reset();
+		drive.reset();
 	}
 
 	/**
@@ -132,17 +132,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		double angle=gyro.getAngle();
-		double angleSuper=RobotMap.SUPER_GYRO.getAngle();
-		double range=ultrasonic.getRangeInches();
-		SmartDashboard.putNumber("gyro angle:",angle);
-		SmartDashboard.putNumber("angleSuper",angleSuper);
-		SmartDashboard.putNumber("Angle X", RobotMap.SUPER_GYRO.getAngleX());
-		SmartDashboard.putNumber("Angle Y", RobotMap.SUPER_GYRO.getAngleY());
-		SmartDashboard.putNumber("Angle Z", RobotMap.SUPER_GYRO.getAngleZ());
-		SmartDashboard.putNumber("range?",range);
 		Scheduler.getInstance().run();
-
+		drive.log();
 	}
 
 	/**

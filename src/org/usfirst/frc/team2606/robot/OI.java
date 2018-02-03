@@ -7,129 +7,115 @@
 
 package org.usfirst.frc.team2606.robot;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team2606.robot.sensor.driver.ADIS16448_IMU;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    private Joystick XBOX_CONTROLLER = RobotMap.XBOX_CONTROLLER;
-    private JoystickButton XBOX_A;
-    private JoystickButton XBOX_B;
-    private JoystickButton XBOX_X;
-    private JoystickButton XBOX_Y;
-    private JoystickButton LEFT_BUMPER;
-    private JoystickButton RIGHT_BUMPER;
-    private JoystickButton SELECT;
-    private JoystickButton START;
-    private JoystickButton PRESS_LEFT_ANALOG;
-    private JoystickButton PRESS_RIGHT_ANALOG;
-    private JoystickAxis LEFT_ANALOG;
-    private JoystickAxis RIGHT_ANALOG;
-    private JoystickAxis LEFT_TRIGGER;
-    private JoystickAxis RIGHT_TRIGGER;
+    private Joystick xboxController = new Joystick(RobotMap.XBOX_CONTROLLER);
+    private JoystickButton xboxA;
+    private JoystickButton xboxB;
+    private JoystickButton xboxX;
+    private JoystickButton xboxY;
+    private JoystickButton leftBumper;
+    private JoystickButton rightBumper;
+    private JoystickButton select;
+    private JoystickButton start;
+    private JoystickButton pressLeftAnalog;
+    private JoystickButton pressRightAnalog;
+    private JoystickAxis leftAnalog;
+    private JoystickAxis rightAnalog;
+    private JoystickAxis leftTrigger;
+    private JoystickAxis rightTrigger;
 
     OI() {
         //Joystick Mapping
-        XBOX_A = new JoystickButton(XBOX_CONTROLLER, 1);
-        XBOX_B = new JoystickButton(XBOX_CONTROLLER, 2);
-        XBOX_X = new JoystickButton(XBOX_CONTROLLER, 3);
-        XBOX_Y = new JoystickButton(XBOX_CONTROLLER, 4);
+        xboxA = new JoystickButton(xboxController, RobotMap.XBOX_A);
+        xboxB = new JoystickButton(xboxController, RobotMap.XBOX_B);
+        xboxX = new JoystickButton(xboxController, RobotMap.XBOX_X);
+        xboxY = new JoystickButton(xboxController, RobotMap.XBOX_Y);
 
-        LEFT_BUMPER = new JoystickButton(XBOX_CONTROLLER, 5);
-        RIGHT_BUMPER = new JoystickButton(XBOX_CONTROLLER, 6);
-        SELECT = new JoystickButton(XBOX_CONTROLLER, 7);
-        START = new JoystickButton(XBOX_CONTROLLER, 8);
-        PRESS_LEFT_ANALOG = new JoystickButton(XBOX_CONTROLLER, 9);
-        PRESS_RIGHT_ANALOG = new JoystickButton(XBOX_CONTROLLER, 10);
-        LEFT_ANALOG = new JoystickAxis(XBOX_CONTROLLER, 0, 1);
-        RIGHT_ANALOG = new JoystickAxis(XBOX_CONTROLLER, 4, 5);
-        LEFT_TRIGGER = new JoystickAxis(XBOX_CONTROLLER, 2, 2);
-        RIGHT_TRIGGER = new JoystickAxis(XBOX_CONTROLLER, 3, 3);
-
-        SmartDashboard.putBoolean("A Button:", XBOX_A.get());
-        SmartDashboard.putBoolean("B Button:", XBOX_B.get());
-        SmartDashboard.putBoolean("X Button:", XBOX_X.get());
-        SmartDashboard.putBoolean("Y Button:", XBOX_Y.get());
-        SmartDashboard.putBoolean("Left Bumper:", LEFT_BUMPER.get());
-        SmartDashboard.putBoolean("Right Bumper:", RIGHT_BUMPER.get());
-        SmartDashboard.putBoolean("Select:", SELECT.get());
-        SmartDashboard.putBoolean("Start:", START.get());
-        SmartDashboard.putBoolean("Left Analog Pressed:", PRESS_LEFT_ANALOG.get());
-        SmartDashboard.putBoolean("Right Analog Pressed:", PRESS_RIGHT_ANALOG.get());
-        SmartDashboard.putNumber("Left Analog X:", LEFT_ANALOG.getX());
-        SmartDashboard.putNumber("Left Analog Y:", LEFT_ANALOG.getY());
-        SmartDashboard.putNumber("Right Analog X:", RIGHT_ANALOG.getX());
-        SmartDashboard.putNumber("Right Analog Y", RIGHT_ANALOG.getY());
-        SmartDashboard.putNumber("Left Trigger", LEFT_TRIGGER.getX());
-        SmartDashboard.putNumber("Right Trigger", RIGHT_TRIGGER.getX());
+        leftBumper = new JoystickButton(xboxController, RobotMap.LEFT_BUMPER);
+        rightBumper = new JoystickButton(xboxController, RobotMap.RIGHT_BUMPER);
+        select = new JoystickButton(xboxController, RobotMap.SELECT);
+        start = new JoystickButton(xboxController, RobotMap.START);
+        pressLeftAnalog = new JoystickButton(xboxController, RobotMap.PRESS_LEFT_ANALOG);
+        pressRightAnalog = new JoystickButton(xboxController, RobotMap.PRESS_RIGHT_ANALOG);
+        leftAnalog = new JoystickAxis(xboxController, RobotMap.LEFT_ANALOG_X_AXIS, RobotMap.LEFT_ANALOG_Y_AXIS);
+        rightAnalog = new JoystickAxis(xboxController, RobotMap.RIGHT_ANALOG_X_AXIS, RobotMap.RIGHT_ANALOG_Y_AXIS);
+        leftTrigger = new JoystickAxis(xboxController, RobotMap.LEFT_TRIGGER_X_AXIS, RobotMap.LEFT_TRIGGER_Y_AXIS);
+        rightTrigger = new JoystickAxis(xboxController, RobotMap.RIGHT_TRIGGER_X_AXIS, RobotMap.RIGHT_TRIGGER_Y_AXIS);
     }
+
     public Joystick getXboxController() {
-        return XBOX_CONTROLLER;
+        return xboxController;
     }
 
     public JoystickButton getXboxA() {
-        return XBOX_A;
+        return xboxA;
     }
 
     public JoystickButton getXboxB() {
-        return XBOX_B;
+        return xboxB;
     }
 
     public JoystickButton getXboxX() {
-        return XBOX_X;
+        return xboxX;
     }
 
     public JoystickButton getXboxY() {
-        return XBOX_Y;
+        return xboxY;
     }
 
     public JoystickButton getLeftBumper() {
-        return LEFT_BUMPER;
+        return leftBumper;
     }
 
     public JoystickButton getRightBumper() {
-        return RIGHT_BUMPER;
+        return rightBumper;
     }
 
     public JoystickButton getSelect() {
-        return SELECT;
+        return select;
     }
 
     public JoystickButton getStart() {
-        return START;
+        return start;
     }
 
     public JoystickButton getPressLeftAnalog() {
-        return PRESS_LEFT_ANALOG;
+        return pressLeftAnalog;
     }
 
     public JoystickButton getPressRightAnalogValue() {
-        return PRESS_RIGHT_ANALOG;
+        return pressRightAnalog;
     }
 
     public double getLeftAnalogXValue() {
-        return LEFT_ANALOG.getX();
+        return leftAnalog.getX();
     }
     public double getLeftAnalogYValue() {
-        return LEFT_ANALOG.getY();
+        return leftAnalog.getY();
     }
 
     public double getRightAnalogXValue() {
-        return RIGHT_ANALOG.getX();
+        return rightAnalog.getX();
     }
     public double getRightAnalogYValue() {
-        return RIGHT_ANALOG.getY();
+        return rightAnalog.getY();
     }
 
     public double getLeftTriggerValue() {
-        return LEFT_TRIGGER.getX();
+        return leftTrigger.getX();
     }
-
     public double getRightTriggerValue() {
-        return RIGHT_TRIGGER.getX();
+        return rightTrigger.getX();
     }
 }
