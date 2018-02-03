@@ -52,24 +52,8 @@ public class OI {
         rightAnalog = new JoystickAxis(xboxController, RobotMap.RIGHT_ANALOG_X_AXIS, RobotMap.RIGHT_ANALOG_Y_AXIS);
         leftTrigger = new JoystickAxis(xboxController, RobotMap.LEFT_TRIGGER_X_AXIS, RobotMap.LEFT_TRIGGER_Y_AXIS);
         rightTrigger = new JoystickAxis(xboxController, RobotMap.RIGHT_TRIGGER_X_AXIS, RobotMap.RIGHT_TRIGGER_Y_AXIS);
-
-        SmartDashboard.putBoolean("A Button:", xboxA.get());
-        SmartDashboard.putBoolean("B Button:", xboxB.get());
-        SmartDashboard.putBoolean("X Button:", xboxX.get());
-        SmartDashboard.putBoolean("Y Button:", xboxY.get());
-        SmartDashboard.putBoolean("Left Bumper:", leftBumper.get());
-        SmartDashboard.putBoolean("Right Bumper:", rightBumper.get());
-        SmartDashboard.putBoolean("Select:", select.get());
-        SmartDashboard.putBoolean("Start:", start.get());
-        SmartDashboard.putBoolean("Left Analog Pressed:", pressLeftAnalog.get());
-        SmartDashboard.putBoolean("Right Analog Pressed:", pressRightAnalog.get());
-        SmartDashboard.putNumber("Left Analog X:", leftAnalog.getX());
-        SmartDashboard.putNumber("Left Analog Y:", leftAnalog.getY());
-        SmartDashboard.putNumber("Right Analog X:", rightAnalog.getX());
-        SmartDashboard.putNumber("Right Analog Y", rightAnalog.getY());
-        SmartDashboard.putNumber("Left Trigger", leftTrigger.getX());
-        SmartDashboard.putNumber("Right Trigger", rightTrigger.getX());
     }
+
     public Joystick getXboxController() {
         return xboxController;
     }
