@@ -30,6 +30,6 @@ public class JoystickAxis extends Trigger {
     }
 
     public boolean get() {
-        return (getX() != 0 || getY() != 0);
+        return (getX() < 0.485 || getX() > 0.515 || getY() < 0.485 || getY() > 0.515);
     }
 }
